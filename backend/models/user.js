@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const like = {
+  like: { type: Boolean, required: true },
+  gameId: { type: Schema.ObjectId, ref: "Game", required: true },
+};
+
 const UserSchema = new Schema({
   name: {
     type: String,
@@ -20,6 +25,10 @@ const UserSchema = new Schema({
     required: true,
     minlength: 8,
     match: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/,
+  },
+  likes: {
+    type: [like],
+    default: [],
   },
   createdAt: {
     type: Date,
