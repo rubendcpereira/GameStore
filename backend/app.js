@@ -1,12 +1,10 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
-var indexRouter = require("./routes/index");
-
-var app = express();
+const app = express();
 
 /**
  * View Engine Setup
@@ -20,20 +18,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
+// Routing
+app.use("/", require("./routes/index"));
 
-// Catches 404 and forward to error handler
+// Catches pages not found
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // Error Handler
 app.use(function (err, req, res, next) {
-  // Sets locals, only providing error in development
-  res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
+  res.locals.message = err.message;
 
-  // Renders the error page
   res.status(err.status || 500);
   res.render("error");
 });
