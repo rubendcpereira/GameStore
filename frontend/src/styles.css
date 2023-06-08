@@ -3,6 +3,18 @@ body {
   display: flex;
 }
 
+/* Global Styling Classes */
+.rounded-button {
+  border: none;
+  border-radius: 64px;
+  padding: min(1vh, 10px) min(3vw, 50px);
+
+  white-space: nowrap;
+  font-weight: 600;
+  color: white;
+  background-color: var(--fcul-blue);
+}
+
 .clickable {
   cursor: pointer;
 }
