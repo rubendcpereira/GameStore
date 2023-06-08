@@ -9,5 +9,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
     NgbModule, // Bootstrap
   ],
+  exports: [NgbModule],
 })
 export class SharedModule {}
