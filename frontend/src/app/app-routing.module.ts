@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./features/features.module').then((m) => m.FeaturesModule),
+      import('./features/home/home.module').then((m) => m.HomeModule),
   },
   {
     path: '**',
