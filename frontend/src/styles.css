@@ -3,6 +3,11 @@ body {
   display: flex;
 }
 
+/* Variables */
+:root {
+  --fcul-blue: #2c3fb1;
+}
+
 /* Global Styling Classes */
 .rounded-button {
   border: none;
