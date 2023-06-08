@@ -3,8 +3,19 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const mongoose = require("mongoose");
 
 const app = express();
+
+/**
+ * Mongoose Connection Setup
+ */
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(
+    "mongodb+srv://gamestore:gamestore@gamestore-db.fiwpo7k.mongodb.net/?retryWrites=true&w=majority"
+  );
+}
 
 /**
  * View Engine Setup
