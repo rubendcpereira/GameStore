@@ -20,10 +20,17 @@ const GameSchema = new Schema({
     type: String,
     required: true,
   },
+  images: {
+    type: [{
+        type: String,
+        match: /(https|http|ftp):\/\/[\w-]+(\.[\w-]+)*([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?/, // https://stackoverflow.com/a/8218223
+    }],
+    required: true,
+  },
   trailer: {
     type: String,
     required: true,
-    match: /(https|http|ftp):\/\/[\w-]+(\.[\w-]+)*([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?/, // https://stackoverflow.com/a/8218223
+    match: /(https|http|ftp):\/\/[\w-]+(\.[\w-]+)*([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?/,
   },
   platform: {
     type: [{
