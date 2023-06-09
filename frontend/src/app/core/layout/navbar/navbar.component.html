@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg py-4">
-  <a routerLink="./"
-    ><img
+  <a routerLink="./">
+    <img
       src="../../../../assets/logos/fcul.png"
       alt="FCUL Logotype"
       id="logo"
@@ -13,13 +13,13 @@
     type="button"
     (click)="isMenuCollapsed = !isMenuCollapsed"
     [class.menuOpened]="!isMenuCollapsed"
-    class="navbar-toggler text-fcul border-0 fs-1"
+    class="text-fcul | navbar-toggler border-0 fs-1"
   >
     &#9776;
   </button>
 
   <div [ngbCollapse]="isMenuCollapsed" class="navbar-collapse text-center">
-    <ul class="navbar-nav w-50 mx-auto justify-content-between">
+    <ul class="navbar-nav w-50 mx-auto justify-content-between fs-5">
       <!-- Home -->
       <li>
         <a
@@ -27,9 +27,10 @@
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
           (click)="isMenuCollapsed = true"
-          class="nav-link clickable text-fcul fs-5 text-decoration-none"
-          >HOME</a
+          class="clickable text-fcul | nav-link"
         >
+          HOME
+        </a>
       </li>
 
       <!-- Store -->
@@ -38,9 +39,10 @@
           routerLink="./store"
           routerLinkActive="active"
           (click)="isMenuCollapsed = true"
-          class="nav-link clickable text-fcul fs-5 text-decoration-none"
-          >STORE</a
+          class="clickable text-fcul | nav-link"
         >
+          STORE
+        </a>
       </li>
 
       <!-- Cart -->
@@ -49,17 +51,15 @@
           routerLink="./cart"
           routerLinkActive="active"
           (click)="isMenuCollapsed = true"
-          class="nav-link clickable text-fcul fs-5 text-decoration-none"
-          >CART</a
+          class="clickable text-fcul | nav-link"
         >
+          CART
+        </a>
       </li>
 
       <!-- Account -->
       <li ngbDropdown>
-        <a
-          ngbDropdownToggle
-          class="nav-link clickable text-fcul fs-5 text-decoration-none"
-        >
+        <a ngbDropdownToggle class="clickable text-fcul | nav-link">
           ACCOUNT
         </a>
         <div ngbDropdownMenu class="text-center">
@@ -84,7 +84,7 @@
     </ul>
 
     <button
-      class="rounded-button clickable mt-3 mt-lg-0"
+      class="rounded-button clickable | mt-lg-0 mt-3"
       (click)="isMenuCollapsed = true"
     >
       LOG OUT
