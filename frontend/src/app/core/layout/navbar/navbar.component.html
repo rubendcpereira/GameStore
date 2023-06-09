@@ -1,0 +1,38 @@
+<nav>
+  <ul
+    class="m-0 d-flex justify-content-between align-items-center list-unstyled"
+  >
+    <a routerLink="/" id="home" class="clickable fs-5 text-decoration-none">
+      <li>HOME</li>
+    </a>
+
+    <a
+      routerLink="/store"
+      id="store"
+      class="clickable fs-5 text-decoration-none"
+    >
+      <li>STORE</li>
+    </a>
+
+    <a routerLink="/cart" id="cart" class="clickable fs-5 text-decoration-none">
+      <li>CART</li>
+    </a>
+
+    <li ngbDropdown>
+      <a
+        ngbDropdownToggle
+        class="dropdownToggle clickable fs-5 text-decoration-none"
+      >
+        ACCOUNT
+      </a>
+      <div ngbDropdownMenu class="text-left">
+        <a ngbDropdownItem routerLink="/details" class="dropdownItem">
+          Details
+        </a>
+        <a ngbDropdownItem routerLink="/wishlist" class="dropdownItem">
+          Wishlist
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>

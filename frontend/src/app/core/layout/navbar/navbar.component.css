@@ -1,0 +1,12 @@
+li,
+.dropdownToggle {
+  color: var(--fcul-blue);
+}
+
+.dropdownItem {
+  cursor: pointer;
+}
+
+.dropdownItem:active {
+  background-color: var(--fcul-blue);
+}
