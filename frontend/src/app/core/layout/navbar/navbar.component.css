@@ -1,22 +1,43 @@
-li,
-.dropdownToggle {
-  color: var(--fcul-blue);
-}
-
-.dropdownItem {
-  cursor: pointer;
-}
-
-.dropdownItem:active {
-  background-color: var(--fcul-blue);
-}
-
+/* Active Router Link */
 .active {
   opacity: 0.3;
 }
 
-.dropdownItem.active {
-  /* Applied when router link is active */
+.dropdown-item.active {
   background-color: white;
   color: black;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  min-width: 100%;
+  position: absolute;
+
+  transition: all 0.35s ease;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dropdown-menu.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdown-item {
+  cursor: pointer;
+
+  &:active {
+    background-color: var(--fcul-blue);
+  }
+}
+
+/* Menu Icon */
+.menuOpened {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.navbar-toggler:not(.menuOpened):focus {
+  box-shadow: none;
 }

@@ -9,6 +9,10 @@ body {
 }
 
 /* Global Styling Classes */
+.text-fcul {
+  color: var(--fcul-blue);
+}
+
 .rounded-button {
   border: none;
   border-radius: 64px;
