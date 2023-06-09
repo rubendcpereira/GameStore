@@ -1,7 +1,3 @@
-#logo {
-  width: 150px;
-}
-
 @media screen and (max-width: 767px) {
   #logo {
     width: max(7vw, 40px);
