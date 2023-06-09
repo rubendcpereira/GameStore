@@ -3,7 +3,9 @@
     class="m-0 d-flex justify-content-between align-items-center list-unstyled"
   >
     <a routerLink="/" id="home" class="clickable fs-5 text-decoration-none">
-      <li>HOME</li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        HOME
+      </li>
     </a>
 
     <a
@@ -11,11 +13,11 @@
       id="store"
       class="clickable fs-5 text-decoration-none"
     >
-      <li>STORE</li>
+      <li routerLinkActive="active">STORE</li>
     </a>
 
     <a routerLink="/cart" id="cart" class="clickable fs-5 text-decoration-none">
-      <li>CART</li>
+      <li routerLinkActive="active">CART</li>
     </a>
 
     <li ngbDropdown>
@@ -26,10 +28,20 @@
         ACCOUNT
       </a>
       <div ngbDropdownMenu class="text-left">
-        <a ngbDropdownItem routerLink="/details" class="dropdownItem">
+        <a
+          ngbDropdownItem
+          routerLink="/details"
+          routerLinkActive="active"
+          class="dropdownItem"
+        >
           Details
         </a>
-        <a ngbDropdownItem routerLink="/wishlist" class="dropdownItem">
+        <a
+          ngbDropdownItem
+          routerLink="/wishlist"
+          routerLinkActive="active"
+          class="dropdownItem"
+        >
           Wishlist
         </a>
       </div>

@@ -10,3 +10,13 @@ li,
 .dropdownItem:active {
   background-color: var(--fcul-blue);
 }
+
+.active {
+  opacity: 0.3;
+}
+
+.dropdownItem.active {
+  /* Applied when router link is active */
+  background-color: white;
+  color: black;
+}
