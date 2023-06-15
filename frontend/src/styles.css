@@ -6,11 +6,16 @@ body {
 /* Variables */
 :root {
   --fcul-blue: #2c3fb1;
+  --border-radius: 5px;
 }
 
 /* Global Styling Classes */
 .text-fcul {
   color: var(--fcul-blue);
+}
+
+.rounded-border {
+  border-radius: var(--border-radius);
 }
 
 .rounded-button {
