@@ -28,7 +28,7 @@
   cursor: pointer;
 
   &:active {
-    background-color: var(--fcul-blue);
+    background-color: rgb(var(--fcul-blue));
   }
 }
 

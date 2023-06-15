@@ -1,7 +1,7 @@
 /* Variables */
 :root {
   /* Colors */
-  --fcul-blue: #2c3fb1;
+  --fcul-blue: 44, 63, 177;
   --gray-blue: 153, 173, 201;
 
   /* Border Radius */
@@ -10,7 +10,7 @@
 
 /* Global Styling Classes */
 .text-fcul {
-  color: var(--fcul-blue);
+  color: rgb(var(--fcul-blue));
 }
 
 .rounded-border {
