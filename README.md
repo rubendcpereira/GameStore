@@ -20,20 +20,3 @@
     </td>
   </tr>
 </table>
-
-## How to run it locally
-```sh
-# Clone the project:
-git clone git@github.com:rubendcpereira/GameStore.git
-cd GameStore
-
-# To run the backend:
-cd backend
-npm i
-npm run devstart
-
-# To run the frontend:
-cd frontend
-npm i
-ng serve
-```
