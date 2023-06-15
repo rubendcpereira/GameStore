@@ -1,6 +1,10 @@
 /* Variables */
 :root {
+  /* Colors */
   --fcul-blue: #2c3fb1;
+  --gray-blue: 153, 173, 201;
+
+  /* Border Radius */
   --border-radius: 5px;
 }
 
