@@ -3,11 +3,11 @@ import { Game } from 'src/app/core/models/game.model';
 import { GameService } from 'src/app/core/services/game.service';
 
 @Component({
-  selector: 'app-game-slider',
-  templateUrl: './game-slider.component.html',
-  styleUrls: ['./game-slider.component.css'],
+  selector: 'app-game-carousel',
+  templateUrl: './game-carousel.component.html',
+  styleUrls: [],
 })
-export class GameSliderComponent {
+export class GameCarouselComponent {
   @Input() games: Game[] = [];
 
   urlPath!: string;
