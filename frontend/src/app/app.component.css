@@ -1,6 +1,6 @@
 :host {
   display: block;
-  background: linear-gradient(180deg, white, rgb(var(--gray-blue)));
+  background-image: linear-gradient(180deg, white, rgb(var(--gray-blue)));
 }
 
 .container {
