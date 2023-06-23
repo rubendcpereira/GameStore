@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './features/home/home.module';
 import { CoreModule } from './core/core.module';
 import { StoreModule } from './features/store/store.module';
+import { RegisterModule } from './features/register/register.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { StoreModule } from './features/store/store.module';
 
     HomeModule,
     StoreModule,
+    RegisterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

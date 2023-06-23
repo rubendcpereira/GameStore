@@ -13,6 +13,13 @@ const routes: Routes = [
       import('./features/store/store.module').then((m) => m.StoreModule),
   },
   {
+    path: 'register',
+    loadChildren: () =>
+      import('./features/register/register.module').then(
+        (m) => m.RegisterModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: '',
   },
