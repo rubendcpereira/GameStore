@@ -1,29 +1,33 @@
-<!-- Search Bar -->
 <form class="d-flex align-items-center gap-2">
-  <input
-    #searchBox
-    placeholder="Search"
-    class="form-control py-2 px-3 bg-light"
-    (input)="addSearchValue(searchBox.value)"
-  />
+  <div class="flex-grow-1">
+    <input
+      #searchBox
+      placeholder="Search"
+      class="form-control py-2 px-3 bg-light"
+      (input)="addSearchValue(searchBox.value)"
+    />
+
+    <!-- Game Names Suggestions -->
+    <ul class="mb-0 ps-0">
+      <li
+        *ngFor="let game of games$ | async"
+        class="clickable | d-flex"
+        (click)="addSearchValue(''); searchBox.value = game.name"
+      >
+        <button
+          type="button"
+          class="form-control py-2 px-3 text-start bg-light"
+        >
+          {{ game.name }}
+        </button>
+      </li>
+    </ul>
+  </div>
+
   <button
-    class="clickable | p-2 border-0 rounded-circle"
+    class="clickable | p-2 border-0 rounded-circle align-self-start"
     (click)="$event.preventDefault(); dispatchNewSearchEvent(searchBox.value)"
   >
     🔍
   </button>
 </form>
-
-<!-- Game Names Suggestions -->
-<ul class="ps-0">
-  <li
-    *ngFor="let game of games$ | async"
-    class="clickable | d-flex"
-    (click)="addSearchValue(''); searchBox.value = game.name"
-  >
-    <span class="form-control py-2 px-3 flex-grow-1 bg-light">{{
-      game.name
-    }}</span>
-    <button class="invisible ms-2 p-2 border-0 rounded-circle">🔍</button>
-  </li>
-</ul>
