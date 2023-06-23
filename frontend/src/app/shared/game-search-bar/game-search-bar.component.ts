@@ -24,13 +24,13 @@ export class GameSearchBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.games$ = this.searchValues.pipe(
-      // waits 300ms after each keystroke before considering the result
+      // Waits 300ms after each keystroke before considering the result
       debounceTime(300),
 
-      // ignores new result if same as previous result
+      // Ignores new result if same as previous result
       distinctUntilChanged(),
 
-      // switches to new search observable each time the result changes
+      // Switches to new search observable each time the result changes
       switchMap((searchValue: string) =>
         this.gameService.getGamesByPrefix(searchValue)
       )
@@ -43,5 +43,6 @@ export class GameSearchBarComponent implements OnInit {
 
   dispatchNewSearchEvent(value: string) {
     this.newSearchEvent.emit(value);
+    this.addSearchValue(''); // hides the suggestions
   }
 }
