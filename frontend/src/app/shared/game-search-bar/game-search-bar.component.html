@@ -12,7 +12,7 @@
       <li
         *ngFor="let game of games$ | async"
         class="clickable | d-flex"
-        (click)="addSearchValue(''); searchBox.value = game.name"
+        (click)="searchBox.value = game.name; ngOnInit()"
       >
         <button
           type="button"
@@ -26,7 +26,11 @@
 
   <button
     class="clickable | p-2 border-0 rounded-circle align-self-start"
-    (click)="$event.preventDefault(); dispatchNewSearchEvent(searchBox.value)"
+    (click)="
+      $event.preventDefault();
+      dispatchNewSearchEvent(searchBox.value);
+      ngOnInit()
+    "
   >
     🔍
   </button>

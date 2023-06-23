@@ -20,8 +20,6 @@ export class GameService {
   }
 
   getGamesByPrefix(prefix: string): Observable<Game[]> {
-    return prefix
-      ? this.http.get<Game[]>(`${this.urlPath}?name=${prefix}`)
-      : of([]);
+    return this.http.get<Game[]>(`${this.urlPath}?name=${prefix}`);
   }
 }

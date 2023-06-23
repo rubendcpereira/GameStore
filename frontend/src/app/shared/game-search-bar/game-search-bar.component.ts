@@ -43,6 +43,5 @@ export class GameSearchBarComponent implements OnInit {
 
   dispatchNewSearchEvent(value: string) {
     this.newSearchEvent.emit(value);
-    this.addSearchValue(''); // hides the suggestions
   }
 }
