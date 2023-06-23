@@ -1,6 +1,6 @@
 <main>
   <h1 class="mb-4 fs-3">GAMES OF THE WEEK</h1>
-  <app-game-carousel [games]="(games$ | async)!.slice(3, 6) || []" />
+  <app-game-carousel [games]="(games$ | async)?.slice(3, 6) || []" />
 </main>
 
 <span class="fs-5 mt-4 fw-semibold">
