@@ -18,6 +18,9 @@
 }
 
 .rounded-button {
+  height: clamp(auto, 20%, 3rem);
+  width: clamp(auto, 20%, 10rem);
+
   border: none;
   border-radius: 64px;
   padding: min(1vh, 10px) min(3vw, 50px);
