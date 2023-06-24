@@ -1,1 +1,32 @@
-<p>store works!</p>
+<h1 class="mb-3">Store</h1>
+
+<app-game-search-bar (newSearchEvent)="getGamesByPrefix($event)" />
+
+<ng-container *ngIf="games$ | async as games">
+  <!-- Games List -->
+  <ng-container *ngIf="games.length; else gamesNotFound">
+    <ul class="my-3 ps-0">
+      <li
+        *ngFor="
+          let game of games | slice : (page - 1) * pageSize : page * pageSize
+        "
+        class="list-unstyled"
+      >
+        <app-game-card [game]="game" />
+      </li>
+    </ul>
+
+    <!-- Paginator -->
+    <app-paginator
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [collectionSize]="games.length"
+      class="d-flex justify-content-center"
+    />
+  </ng-container>
+
+  <!-- Games Not Found -->
+  <ng-template #gamesNotFound>
+    <div class="alert alert-danger mt-3">No game was found.</div>
+  </ng-template>
+</ng-container>
