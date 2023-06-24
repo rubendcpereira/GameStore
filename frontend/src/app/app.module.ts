@@ -8,6 +8,7 @@ import { HomeModule } from './features/home/home.module';
 import { CoreModule } from './core/core.module';
 import { StoreModule } from './features/store/store.module';
 import { RegisterModule } from './features/register/register.module';
+import { GamesModule } from './features/games/games.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { RegisterModule } from './features/register/register.module';
     HomeModule,
     StoreModule,
     RegisterModule,
+    GamesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

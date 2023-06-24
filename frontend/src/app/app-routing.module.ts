@@ -20,6 +20,11 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'games',
+    loadChildren: () =>
+      import('./features/games/games.module').then((m) => m.GamesModule),
+  },
+  {
     path: '**',
     redirectTo: '',
   },
