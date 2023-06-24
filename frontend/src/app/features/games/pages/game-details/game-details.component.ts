@@ -9,7 +9,7 @@ import { GameService } from 'src/app/core/services/game.service';
   templateUrl: './game-details.component.html',
 })
 export class GameDetailsComponent implements OnInit, OnDestroy {
-  game!: Game;
+  public game!: Game;
 
   private readonly ngUnsubscribe: Subject<void> = new Subject<void>();
 
