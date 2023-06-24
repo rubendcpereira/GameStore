@@ -7,3 +7,9 @@ exports.getGames = (req, res, next) => {
     .then((games) => res.json(games))
     .catch((err) => next(err));
 };
+
+exports.getGameById = (req, res, next) => {
+  Game.findById(req.params.id)
+    .then((game) => (game ? res.json(game) : res.sendStatus(404)))
+    .catch((err) => next(err));
+};
