@@ -1,0 +1,16 @@
+::ng-deep .page-item > a.page-link {
+  border: none;
+  background-color: transparent;
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
