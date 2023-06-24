@@ -1,0 +1,14 @@
+:host {
+  margin-block: auto;
+
+  text-align: center;
+}
+
+a {
+  color: rgb(var(--fcul-blue));
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { StoreModule } from './features/store/store.module';
 import { RegisterModule } from './features/register/register.module';
 import { GamesModule } from './features/games/games.module';
+import { LoginModule } from './features/login/login.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { GamesModule } from './features/games/games.module';
     HomeModule,
     StoreModule,
     RegisterModule,
+    LoginModule,
     GamesModule,
   ],
   providers: [],
