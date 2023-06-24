@@ -22,4 +22,8 @@ export class GameService {
   getGamesByPrefix(prefix: string): Observable<Game[]> {
     return this.http.get<Game[]>(`${this.urlPath}?name=${prefix}`);
   }
+
+  getGameById(id: string): Observable<Game> {
+    return this.http.get<Game>(`${this.urlPath}/${id}`);
+  }
 }
