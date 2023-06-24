@@ -8,7 +8,7 @@
   --border-radius: 5px;
 }
 
-/* Global Styling Classes */
+/* Classes */
 .text-fcul {
   color: rgb(var(--fcul-blue));
 }
@@ -41,4 +41,9 @@
 
 .clickable:active {
   transform: scale(0.96);
+}
+
+/* Global Styling */
+a {
+  cursor: pointer;
 }
