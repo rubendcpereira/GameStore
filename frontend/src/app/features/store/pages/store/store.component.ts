@@ -6,7 +6,6 @@ import { GameService } from 'src/app/core/services/game.service';
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
-  styleUrls: ['./store.component.css'],
 })
 export class StoreComponent implements OnInit {
   public games$!: Observable<Game[]>;
