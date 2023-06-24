@@ -5,7 +5,7 @@
 <ng-container *ngIf="games$ | async as games">
   <!-- Games List -->
   <ng-container *ngIf="games.length; else gamesNotFound">
-    <ul class="my-3 ps-0">
+    <ul class="my-4 ps-0">
       <li
         *ngFor="
           let game of games | slice : (page - 1) * pageSize : page * pageSize
