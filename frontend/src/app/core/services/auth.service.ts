@@ -48,6 +48,11 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
+  hasTokenExpired(token: string): boolean {
+    const expirationDate = JSON.parse(atob(token.split('.')[1])).exp;
+    return Math.floor(new Date().getTime() / 1000) >= expirationDate;
+  }
+
   getTokenKey(): string {
     return this.TOKEN_KEY;
   }
