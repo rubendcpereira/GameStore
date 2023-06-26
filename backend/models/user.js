@@ -7,7 +7,7 @@ const like = {
 };
 
 const UserSchema = new Schema({
-  name: {
+  username: {
     type: String,
     required: true,
     unique: true,
