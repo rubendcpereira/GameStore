@@ -10,7 +10,7 @@ import { GameService } from 'src/app/core/services/game.service';
 export class StoreComponent implements OnInit {
   public games$!: Observable<Game[]>;
   public page: number = 1;
-  public pageSize: number = 6;
+  public pageSize: number = 5;
 
   constructor(private gameService: GameService) {}
 
