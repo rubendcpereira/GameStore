@@ -1,11 +1,15 @@
 <h1>Sign In</h1>
 
 <form
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+  novalidate
   class="my-4 d-flex flex-column justify-content-center align-items-center gap-2 text-secondary"
 >
   <!-- Username -->
   <div class="form-floating">
     <input
+      formControlName="username"
       type="text"
       class="form-control bg-light"
       id="username"
@@ -17,6 +21,7 @@
   <!-- Passwowrd -->
   <div class="form-floating">
     <input
+      formControlName="password"
       type="password"
       class="form-control bg-light"
       id="password"
