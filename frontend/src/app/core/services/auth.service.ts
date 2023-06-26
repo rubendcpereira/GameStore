@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -47,6 +47,10 @@ export class AuthService {
     this.isLoggedIn$.next(false);
 
     this.router.navigate(['/login']);
+  }
+
+  public isLoggedIn(): Observable<boolean> {
+    return this.isLoggedIn$.asObservable();
   }
 
   public hasTokenExpired(token: string): boolean {
