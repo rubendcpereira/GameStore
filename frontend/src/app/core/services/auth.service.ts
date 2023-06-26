@@ -1,20 +1,26 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthService implements OnDestroy {
   private readonly URL_PATH: string = '/auth';
   private readonly TOKEN_KEY: string = 'token';
+  private readonly ngUnsubscribe: Subject<void> = new Subject<void>();
   private isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
   private userId?: string;
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  public ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
 
   public register(username: string, email: string, password: string): void {
     this.http
@@ -23,6 +29,7 @@ export class AuthService {
         email,
         password,
       })
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(() => this.login(username, password));
   }
 
@@ -32,6 +39,7 @@ export class AuthService {
         username,
         password,
       })
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((token_userId: { token: string; userId: string }) => {
         this.userId = token_userId.userId;
 
