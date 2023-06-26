@@ -27,9 +27,8 @@ exports.login = async (req, res, next) => {
     }
 
     // Response
-    const token = jwt.sign({ _id: user._id }, SECRET_KEY);
-    const { password, ...data } = user.toJSON();
-    res.cookie("jwt", token, { maxAge: 24 * 60 * 60 * 1000 /* 1 day */ }).send(data);
+    const token = jwt.sign({ _id: user._id }, SECRET_KEY, { expiresIn: "1h" });
+    return res.json({ token: token, userId: user._id });
   } catch (err) {
     return next(err);
   }
