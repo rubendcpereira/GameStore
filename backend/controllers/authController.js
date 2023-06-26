@@ -34,7 +34,3 @@ exports.login = async (req, res, next) => {
     return next(err);
   }
 };
-
-exports.logout = (req, res, next) => {
-  res.cookie("jwt", "", { maxAge: 0 }).sendStatus(200);
-};
