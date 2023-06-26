@@ -34,6 +34,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Routing
 app.use("/", require("./routes/index"));
 app.use("/games", require("./routes/games"));
+app.use("/users", require("./routes/users"));
 
 // Catches pages not found
 app.use(function (req, res, next) {
