@@ -9,7 +9,7 @@ exports.register = async (req, res, next) => {
     user.password = bcrypt.hashSync(req.body.password, 12);
     await user.save();
 
-    return res.sendStatus(201);
+    return res.sendStatus(201); // Created
   } catch (err) {
     return next(err);
   }
@@ -21,9 +21,9 @@ exports.login = async (req, res, next) => {
 
     // Validation
     if (!user) {
-      return res.sendStatus(404);
+      return res.sendStatus(404); // Not Found
     } else if (!(await bcrypt.compare(req.body.password, user.password))) {
-      return res.sendStatus(400);
+      return res.sendStatus(400); // Bad Request
     }
 
     // Response
