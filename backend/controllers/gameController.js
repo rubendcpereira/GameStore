@@ -10,6 +10,6 @@ exports.getGames = (req, res, next) => {
 
 exports.getGameById = (req, res, next) => {
   Game.findById(req.params.id)
-    .then((game) => (game ? res.json(game) : res.sendStatus(404)))
+    .then((game) => (game ? res.json(game) : res.status(404).json({ message: "Game Not Found" })))
     .catch((err) => next(err));
 };

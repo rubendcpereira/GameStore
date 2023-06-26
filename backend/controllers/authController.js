@@ -11,7 +11,7 @@ exports.register = async (req, res, next) => {
     user.password = bcrypt.hashSync(req.body.password, 12);
     await user.save();
 
-    return res.sendStatus(201); // Created
+    return res.status(201).json({ message: "User Registered" });
   } catch (err) {
     return next(err);
   }
@@ -19,13 +19,13 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
   try {
-    const user = await User.findOne({ name: req.body.name });
+    const user = await User.findOne({ username: req.body.username });
 
     // Validation
     if (!user) {
-      return res.sendStatus(404); // Not Found
+      return res.status(404).json({ message: "User Not Found" });
     } else if (!(await bcrypt.compare(req.body.password, user.password))) {
-      return res.sendStatus(400); // Bad Request
+      return res.status(400).json({ message: "Wrong Password" });
     }
 
     // Response
