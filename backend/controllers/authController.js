@@ -29,7 +29,7 @@ exports.login = async (req, res, next) => {
     }
 
     // Response
-    const token = jwt.sign({ _id: user._id }, SECRET_KEY, { expiresIn: "1h" });
+    const token = jwt.sign({ _id: user._id }, SECRET_KEY, { expiresIn: "1d" });
     return res.json({ token: token, userId: user._id });
   } catch (err) {
     return next(err);
