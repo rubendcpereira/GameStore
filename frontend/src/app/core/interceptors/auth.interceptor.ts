@@ -19,8 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
     const token = localStorage.getItem(this.authService.getTokenKey());
 
     if (token && this.authService.hasTokenExpired(token)) {
-      this.authService.logout();
-      return EMPTY;
+      return this.handleExpiredToken();
     }
 
     return next.handle(
@@ -30,5 +29,10 @@ export class AuthInterceptor implements HttpInterceptor {
             headers: request.headers.set('Authorization', 'Bearer ' + token),
           })
     );
+  }
+
+  private handleExpiredToken(): Observable<HttpEvent<unknown>> {
+    this.authService.logout();
+    return EMPTY;
   }
 }
