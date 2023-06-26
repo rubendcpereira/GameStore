@@ -45,43 +45,53 @@
         </a>
       </li>
 
-      <!-- Cart -->
-      <li>
-        <a
-          class="clickable text-fcul | nav-link"
-          onclick="alert('⚠️ This feature has not been implemented yet.')"
-        >
-          CART
-        </a>
-      </li>
+      <ng-container *ngIf="isUserLoggedIn">
+        <!-- Cart -->
+        <li>
+          <a
+            class="clickable text-fcul | nav-link"
+            onclick="alert('⚠️ This feature has not been implemented yet.')"
+          >
+            CART
+          </a>
+        </li>
 
-      <!-- Account -->
-      <li ngbDropdown>
-        <a ngbDropdownToggle class="clickable text-fcul | nav-link">
-          ACCOUNT
-        </a>
-        <div ngbDropdownMenu class="text-center">
-          <a
-            ngbDropdownItem
-            onclick="alert('⚠️ This feature has not been implemented yet.')"
-          >
-            Details
+        <!-- Account -->
+        <li ngbDropdown>
+          <a ngbDropdownToggle class="clickable text-fcul | nav-link">
+            ACCOUNT
           </a>
-          <a
-            ngbDropdownItem
-            onclick="alert('⚠️ This feature has not been implemented yet.')"
-          >
-            Wishlist
-          </a>
-        </div>
-      </li>
+          <div ngbDropdownMenu class="text-center">
+            <a
+              ngbDropdownItem
+              onclick="alert('⚠️ This feature has not been implemented yet.')"
+            >
+              Details
+            </a>
+            <a
+              ngbDropdownItem
+              onclick="alert('⚠️ This feature has not been implemented yet.')"
+            >
+              Wishlist
+            </a>
+          </div>
+        </li>
+      </ng-container>
     </ul>
 
     <button
+      *ngIf="isUserLoggedIn"
       class="rounded-button clickable | mt-lg-0 mt-3"
       (click)="logout(); isMenuCollapsed = true"
     >
       LOG OUT
+    </button>
+    <button
+      *ngIf="!isUserLoggedIn"
+      class="rounded-button clickable | mt-lg-0 mt-3"
+      (click)="login(); isMenuCollapsed = true"
+    >
+      LOG IN
     </button>
   </div>
 </nav>
