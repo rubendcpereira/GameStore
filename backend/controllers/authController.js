@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
-const SECRET_KEY = "secretKey";
+const SECRET_KEY = "shh...";
 
 exports.register = async (req, res, next) => {
   try {
