@@ -9,8 +9,9 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   private readonly URL_PATH: string = '/auth';
   private readonly TOKEN_KEY: string = 'token';
-  private isUserLoggedIn$: BehaviorSubject<boolean> =
-    new BehaviorSubject<boolean>(false);
+  private isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
   private userId?: string;
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -35,7 +36,7 @@ export class AuthService {
         this.userId = token_userId.userId;
 
         localStorage.setItem(this.TOKEN_KEY, token_userId.token);
-        this.isUserLoggedIn$.next(true);
+        this.isLoggedIn$.next(true);
 
         this.router.navigate(['/']);
       });
@@ -43,7 +44,7 @@ export class AuthService {
 
   public logout(): void {
     localStorage.removeItem(this.TOKEN_KEY);
-    this.isUserLoggedIn$.next(false);
+    this.isLoggedIn$.next(false);
 
     this.router.navigate(['/login']);
   }
