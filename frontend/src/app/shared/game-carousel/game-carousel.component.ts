@@ -10,7 +10,7 @@ import { GameService } from 'src/app/core/services/game.service';
 export class GameCarouselComponent {
   @Input() games: Game[] = [];
 
-  urlPath!: string;
+  public urlPath!: string;
 
   constructor(private gameService: GameService) {}
 

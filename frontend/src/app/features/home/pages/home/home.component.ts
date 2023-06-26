@@ -9,7 +9,7 @@ import { GameService } from 'src/app/core/services/game.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  games$!: Observable<Game[]>;
+  public games$!: Observable<Game[]>;
 
   constructor(private gameService: GameService) {}
 

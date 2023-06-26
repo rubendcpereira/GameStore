@@ -17,7 +17,7 @@ import { GameService } from 'src/app/core/services/game.service';
 export class GameSearchBarComponent implements OnInit {
   @Output() newSearchEvent = new EventEmitter<string>();
 
-  games$!: Observable<Game[]>;
+  public games$!: Observable<Game[]>;
   private searchValues = new Subject<string>();
 
   constructor(private gameService: GameService) {}
