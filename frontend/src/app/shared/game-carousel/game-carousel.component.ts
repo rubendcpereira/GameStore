@@ -14,11 +14,11 @@ export class GameCarouselComponent {
 
   constructor(private gameService: GameService) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.urlPath = this.getUrlPath();
   }
 
-  getUrlPath(): string {
+  private getUrlPath(): string {
     return this.gameService.getUrlPath();
   }
 }

@@ -22,7 +22,7 @@ export class GameSearchBarComponent implements OnInit {
 
   constructor(private gameService: GameService) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.games$ = this.searchValues.pipe(
       // Waits 300ms after each keystroke before considering the result
       debounceTime(300),
@@ -37,11 +37,11 @@ export class GameSearchBarComponent implements OnInit {
     );
   }
 
-  addSearchValue(value: string): void {
+  public addSearchValue(value: string): void {
     this.searchValues.next(value);
   }
 
-  dispatchNewSearchEvent(value: string) {
+  public dispatchNewSearchEvent(value: string) {
     this.newSearchEvent.emit(value);
   }
 }

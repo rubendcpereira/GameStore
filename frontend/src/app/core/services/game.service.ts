@@ -11,19 +11,19 @@ export class GameService {
 
   constructor(private http: HttpClient) {}
 
-  getUrlPath(): string {
+  public getUrlPath(): string {
     return this.URL_PATH;
   }
 
-  getGames(): Observable<Game[]> {
+  public getGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.URL_PATH);
   }
 
-  getGamesByPrefix(prefix: string): Observable<Game[]> {
+  public getGamesByPrefix(prefix: string): Observable<Game[]> {
     return this.http.get<Game[]>(`${this.URL_PATH}?name=${prefix}`);
   }
 
-  getGameById(id: string): Observable<Game> {
+  public getGameById(id: string): Observable<Game> {
     return this.http.get<Game>(`${this.URL_PATH}/${id}`);
   }
 }

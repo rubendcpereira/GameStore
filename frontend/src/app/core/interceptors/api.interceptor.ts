@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class ApiInterceptor implements HttpInterceptor {
   private baseUrl: string = 'http://localhost:3000';
 
-  intercept(
+  public intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {

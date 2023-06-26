@@ -13,11 +13,11 @@ export class HomeComponent implements OnInit {
 
   constructor(private gameService: GameService) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.games$ = this.getGames();
   }
 
-  getGames(): Observable<Game[]> {
+  private getGames(): Observable<Game[]> {
     return this.gameService.getGames();
   }
 }

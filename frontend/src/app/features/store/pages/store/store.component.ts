@@ -14,15 +14,15 @@ export class StoreComponent implements OnInit {
 
   constructor(private gameService: GameService) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getGames();
   }
 
-  getGames(): void {
-    this.games$ = this.gameService.getGames();
+  public getGamesByPrefix(prefix: string): void {
+    this.games$ = this.gameService.getGamesByPrefix(prefix);
   }
 
-  getGamesByPrefix(prefix: string): void {
-    this.games$ = this.gameService.getGamesByPrefix(prefix);
+  private getGames(): void {
+    this.games$ = this.gameService.getGames();
   }
 }

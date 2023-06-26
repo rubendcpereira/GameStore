@@ -10,7 +10,6 @@ import { GameService } from 'src/app/core/services/game.service';
 })
 export class GameDetailsComponent implements OnInit, OnDestroy {
   public game!: Game;
-
   private readonly ngUnsubscribe: Subject<void> = new Subject<void>();
 
   constructor(
@@ -19,11 +18,16 @@ export class GameDetailsComponent implements OnInit, OnDestroy {
     private gameService: GameService
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getGameById(this.activatedRoute.snapshot.params['id']);
   }
 
-  getGameById(id: string): void {
+  public ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+
+  private getGameById(id: string): void {
     this.gameService
       .getGameById(id)
       .pipe(
@@ -36,10 +40,5 @@ export class GameDetailsComponent implements OnInit, OnDestroy {
       .subscribe((game) => {
         this.game = game;
       });
-  }
-
-  ngOnDestroy(): void {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
   }
 }

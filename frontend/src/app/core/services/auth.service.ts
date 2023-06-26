@@ -15,7 +15,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  register(username: string, email: string, password: string): void {
+  public register(username: string, email: string, password: string): void {
     this.http
       .post<HttpResponse<unknown>>(this.URL_PATH + '/register', {
         username,
@@ -25,7 +25,7 @@ export class AuthService {
       .subscribe(() => this.login(username, password));
   }
 
-  login(username: string, password: string): void {
+  public login(username: string, password: string): void {
     this.http
       .post<{ token: string; userId: string }>(this.URL_PATH + '/login', {
         username,
@@ -41,19 +41,19 @@ export class AuthService {
       });
   }
 
-  logout(): void {
+  public logout(): void {
     localStorage.removeItem(this.TOKEN_KEY);
     this.isUserLoggedIn$.next(false);
 
     this.router.navigate(['/login']);
   }
 
-  hasTokenExpired(token: string): boolean {
+  public hasTokenExpired(token: string): boolean {
     const expirationDate = JSON.parse(atob(token.split('.')[1])).exp;
     return Math.floor(new Date().getTime() / 1000) >= expirationDate;
   }
 
-  getTokenKey(): string {
+  public getTokenKey(): string {
     return this.TOKEN_KEY;
   }
 }

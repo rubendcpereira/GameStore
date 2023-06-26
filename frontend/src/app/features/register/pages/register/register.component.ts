@@ -19,7 +19,7 @@ export class RegisterComponent {
     private authService: AuthService
   ) {}
 
-  onSubmit(): void {
+  public onSubmit(): void {
     if (this.registerForm.valid) {
       const { username, email, password } = this.registerForm.value;
       this.authService.register(username!, email!, password!);

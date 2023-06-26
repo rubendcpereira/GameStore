@@ -11,11 +11,11 @@ export class PaginatorComponent {
   @Input() collectionSize!: number;
   @Output() pageChange: EventEmitter<number> = new EventEmitter<number>();
 
-  selectPage(page: string | number): void {
+  public selectPage(page: string | number): void {
     this.pageChange.emit(+page || 1);
   }
 
-  formatInput(input: HTMLInputElement): void {
+  public formatInput(input: HTMLInputElement): void {
     input.value = input.value.replace(/[^0-9]/g, '');
   }
 }
