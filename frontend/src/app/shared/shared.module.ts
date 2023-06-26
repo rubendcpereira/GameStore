@@ -5,6 +5,7 @@ import { GameCarouselComponent } from './game-carousel/game-carousel.component';
 import { RouterModule } from '@angular/router';
 import { GameSearchBarComponent } from './game-search-bar/game-search-bar.component';
 import { PaginatorComponent } from './paginator/paginator.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,11 +16,13 @@ import { PaginatorComponent } from './paginator/paginator.component';
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
 
     NgbModule, // Bootstrap
   ],
   exports: [
     RouterModule,
+    ReactiveFormsModule,
 
     NgbModule,
 
