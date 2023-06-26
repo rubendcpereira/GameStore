@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class GameService {
-  private urlPath: string = '/games';
+  private readonly urlPath: string = '/games';
 
   constructor(private http: HttpClient) {}
 
