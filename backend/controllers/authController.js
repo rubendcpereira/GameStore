@@ -18,5 +18,5 @@ exports.login = (req, res, next) => {
 };
 
 exports.logout = (req, res, next) => {
-  // TODO
+  res.cookie("jwt", "", { maxAge: 0 }).sendStatus(200);
 };
