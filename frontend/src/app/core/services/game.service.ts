@@ -7,23 +7,23 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class GameService {
-  private readonly urlPath: string = '/games';
+  private readonly URL_PATH: string = '/games';
 
   constructor(private http: HttpClient) {}
 
   getUrlPath(): string {
-    return this.urlPath;
+    return this.URL_PATH;
   }
 
   getGames(): Observable<Game[]> {
-    return this.http.get<Game[]>(this.urlPath);
+    return this.http.get<Game[]>(this.URL_PATH);
   }
 
   getGamesByPrefix(prefix: string): Observable<Game[]> {
-    return this.http.get<Game[]>(`${this.urlPath}?name=${prefix}`);
+    return this.http.get<Game[]>(`${this.URL_PATH}?name=${prefix}`);
   }
 
   getGameById(id: string): Observable<Game> {
-    return this.http.get<Game>(`${this.urlPath}/${id}`);
+    return this.http.get<Game>(`${this.URL_PATH}/${id}`);
   }
 }
