@@ -9,6 +9,7 @@
   align-items: center;
 
   text-align: center;
+  text-wrap: balance;
 }
 
 h1 {
