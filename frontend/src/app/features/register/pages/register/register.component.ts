@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { catchError, throwError } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -36,7 +37,23 @@ export class RegisterComponent {
   public onSubmit(): void {
     if (this.registerForm.valid) {
       const { username, email, password } = this.registerForm.value;
-      this.authService.register(username!, email!, password!);
+      this.authService
+        .register(username!, email!, password!)
+        .pipe(
+          catchError((err) => {
+            if (err.error.message === 'Username and Email Already Exist') {
+              this.username?.setErrors({ duplicatedUsername: true });
+              this.email?.setErrors({ duplicatedEmail: true });
+            } else if (err.error.message === 'Username Already Exists') {
+              this.username?.setErrors({ duplicatedUsername: true });
+            } else if (err.error.message === 'Email Already Exists') {
+              this.email?.setErrors({ duplicatedEmail: true });
+            }
+
+            return throwError(() => err);
+          })
+        )
+        .subscribe();
     }
   }
 

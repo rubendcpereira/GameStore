@@ -31,6 +31,9 @@
     <li *ngIf="username?.errors?.['pattern']">
       The username must only contain alphanumeric characters.
     </li>
+    <li *ngIf="username?.errors?.['duplicatedUsername']">
+      The username is already in use.
+    </li>
   </ul>
 
   <!-- Email -->
@@ -53,6 +56,9 @@
   >
     <li *ngIf="email?.errors?.['required']">The email is required.</li>
     <li *ngIf="email?.errors?.['email']">The email must be valid.</li>
+    <li *ngIf="email?.errors?.['duplicatedEmail']">
+      The email is already in use.
+    </li>
   </ul>
 
   <!-- Password -->
