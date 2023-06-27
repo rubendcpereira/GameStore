@@ -1,15 +1,14 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, Observable, first, takeUntil, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService implements OnDestroy {
+export class AuthService {
   private readonly URL_PATH: string = '/auth';
   private readonly TOKEN_KEY: string = 'token';
-  private readonly ngUnsubscribe: Subject<void> = new Subject<void>();
   private isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
@@ -21,37 +20,43 @@ export class AuthService implements OnDestroy {
     }
   }
 
-  public ngOnDestroy(): void {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
-  }
-
-  public register(username: string, email: string, password: string): void {
-    this.http
+  public register(
+    username: string,
+    email: string,
+    password: string
+  ): Observable<HttpResponse<unknown>> {
+    return this.http
       .post<HttpResponse<unknown>>(this.URL_PATH + '/register', {
         username: username.toLowerCase(),
         email: email.toLowerCase(),
         password,
       })
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe(() => this.login(username, password));
+      .pipe(
+        first(),
+        tap(() => this.login(username, password))
+      );
   }
 
-  public login(username: string, password: string): void {
-    this.http
+  public login(
+    username: string,
+    password: string
+  ): Observable<{ token: string; userId: string }> {
+    return this.http
       .post<{ token: string; userId: string }>(this.URL_PATH + '/login', {
         username: username.toLowerCase(),
         password,
       })
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((token_userId: { token: string; userId: string }) => {
-        this.userId = token_userId.userId;
+      .pipe(
+        first(),
+        tap((token_userId: { token: string; userId: string }) => {
+          this.userId = token_userId.userId;
 
-        localStorage.setItem(this.TOKEN_KEY, token_userId.token);
-        this.isLoggedIn$.next(true);
+          localStorage.setItem(this.TOKEN_KEY, token_userId.token);
+          this.isLoggedIn$.next(true);
 
-        this.router.navigate(['/']);
-      });
+          this.router.navigate(['/']);
+        })
+      );
   }
 
   public logout(hasSessionExpired?: boolean): void {
