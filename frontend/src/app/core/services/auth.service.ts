@@ -54,11 +54,13 @@ export class AuthService implements OnDestroy {
       });
   }
 
-  public logout(): void {
+  public logout(hasSessionExpired?: boolean): void {
     localStorage.removeItem(this.TOKEN_KEY);
     this.isLoggedIn$.next(false);
 
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login'], {
+      queryParams: hasSessionExpired ? { expired: true } : {},
+    });
   }
 
   public isLoggedIn(): Observable<boolean> {

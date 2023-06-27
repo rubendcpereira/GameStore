@@ -32,7 +32,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private handleExpiredToken(): Observable<HttpEvent<unknown>> {
-    this.authService.logout();
+    this.authService.logout(true);
     return EMPTY;
   }
 }
