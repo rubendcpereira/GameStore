@@ -7,10 +7,24 @@ const SECRET_KEY = "shh...";
 
 exports.register = async (req, res, next) => {
   try {
+    const { username, email, ...data } = req.body;
+
+    // Checks if the unique user details are already in use
+    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    if (existingUser) {
+      if (existingUser.username === username && existingUser.email === email) {
+        return res.status(409).json({ message: "Username and Email Already Exist" });
+      } else if (existingUser.username === username) {
+        return res.status(409).json({ message: "Username Already Exists" });
+      } else {
+        return res.status(409).json({ message: "Email Already Exists" });
+      }
+    }
+
+    // Registers user
     const user = new User(req.body);
     user.password = bcrypt.hashSync(req.body.password, 12);
     await user.save();
-
     return res.status(201).json({ message: "User Registered" });
   } catch (err) {
     return next(err);
