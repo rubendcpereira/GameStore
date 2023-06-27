@@ -9,9 +9,23 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class RegisterComponent {
   public registerForm = this.formBuilder.group({
-    username: ['', Validators.required],
-    email: ['', Validators.required],
-    password: ['', Validators.required],
+    username: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.pattern(/^[a-z0-9]+$/i), // Alphanumeric characters
+      ],
+    ],
+    email: ['', [Validators.required, Validators.email]],
+    password: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/), // At least one number, one lowercase letter and one uppercase letter
+      ],
+    ],
   });
 
   constructor(
@@ -24,5 +38,17 @@ export class RegisterComponent {
       const { username, email, password } = this.registerForm.value;
       this.authService.register(username!, email!, password!);
     }
+  }
+
+  get username() {
+    return this.registerForm.get('username');
+  }
+
+  get email() {
+    return this.registerForm.get('email');
+  }
+
+  get password() {
+    return this.registerForm.get('password');
   }
 }
