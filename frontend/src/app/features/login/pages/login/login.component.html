@@ -14,28 +14,59 @@
   class="my-4 d-flex flex-column justify-content-center align-items-center gap-2 text-secondary"
 >
   <!-- Username -->
+  <!-- Input -->
   <div class="form-floating">
     <input
       formControlName="username"
-      type="text"
-      class="form-control bg-light"
       id="username"
+      type="text"
       placeholder="Username"
+      class="form-control pe-2 bg-light"
+      [class.is-invalid]="username?.invalid && username?.touched"
     />
     <label for="username">Username</label>
   </div>
+  <!-- Validation -->
+  <ul
+    *ngIf="username?.invalid && username?.touched"
+    class="list-unstyled text-danger"
+  >
+    <li *ngIf="username?.errors?.['required']">The username is required.</li>
+    <li *ngIf="username?.errors?.['minlength']">
+      The username must be at least 3 characters long.
+    </li>
+    <li *ngIf="username?.errors?.['pattern']">
+      The username must only contain alphanumeric characters.
+    </li>
+  </ul>
 
   <!-- Password -->
+  <!-- Input -->
   <div class="form-floating">
     <input
       formControlName="password"
-      type="password"
-      class="form-control bg-light"
       id="password"
+      type="password"
       placeholder="Password"
+      class="form-control pe-2 bg-light"
+      [class.is-invalid]="password?.invalid && password?.touched"
     />
     <label for="password">Password</label>
   </div>
+  <!-- Validation -->
+  <ul
+    *ngIf="password?.invalid && password?.touched"
+    class="list-unstyled text-danger"
+  >
+    <li *ngIf="password?.errors?.['required']">The password is required.</li>
+    <li *ngIf="password?.errors?.['minlength']">
+      The password must be at least 8 characters long.
+    </li>
+    <li *ngIf="password?.errors?.['pattern']">
+      The password must contain at least one number, one uppercase letter and
+      one lowercase letter.
+    </li>
+  </ul>
 
   <!-- Submit -->
   <button
