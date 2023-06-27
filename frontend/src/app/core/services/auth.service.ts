@@ -15,7 +15,11 @@ export class AuthService implements OnDestroy {
   );
   private userId?: string;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    if (localStorage.getItem(this.TOKEN_KEY)) {
+      this.isLoggedIn$.next(true);
+    }
+  }
 
   public ngOnDestroy(): void {
     this.ngUnsubscribe.next();
