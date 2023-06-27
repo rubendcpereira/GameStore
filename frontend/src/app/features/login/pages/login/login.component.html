@@ -1,5 +1,12 @@
 <h1>Sign In</h1>
 
+<div
+  *ngIf="hasSessionExpired"
+  class="alert alert-danger d-inline-block mx-auto mt-4"
+>
+  Your session has expired. Please log in again.
+</div>
+
 <form
   [formGroup]="loginForm"
   (ngSubmit)="onSubmit()"

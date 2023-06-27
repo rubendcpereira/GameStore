@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -7,16 +8,23 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  public hasSessionExpired!: boolean;
   public loginForm = this.formBuilder.group({
     username: ['', Validators.required],
     password: ['', Validators.required],
   });
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private authService: AuthService
   ) {}
+
+  public ngOnInit(): void {
+    this.hasSessionExpired =
+      this.activatedRoute.snapshot.queryParams['expired'];
+  }
 
   public onSubmit(): void {
     if (this.loginForm.valid) {
