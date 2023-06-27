@@ -33,7 +33,7 @@ export class AuthService {
       })
       .pipe(
         first(),
-        tap(() => this.login(username, password))
+        tap(() => this.login(username, password).subscribe())
       );
   }
 
