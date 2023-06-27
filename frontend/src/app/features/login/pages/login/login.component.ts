@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -43,7 +44,15 @@ export class LoginComponent implements OnInit {
   public onSubmit(): void {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
-      this.authService.login(username!, password!);
+      this.authService
+        .login(username!, password!)
+        .pipe(
+          catchError((err) => {
+            this.loginForm.setErrors({ wrongdetails: true });
+            return throwError(() => err);
+          })
+        )
+        .subscribe();
     }
 
     this.hasSessionExpired = false;

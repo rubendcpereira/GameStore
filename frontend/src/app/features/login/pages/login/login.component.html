@@ -115,6 +115,11 @@
     </svg>
   </button>
 
+  <!-- Wrong Details Alert -->
+  <div *ngIf="loginForm.errors?.['wrongdetails']" class="text-danger">
+    Sorry, your username or password was incorrect.
+  </div>
+
   <!-- Help -->
   <a
     onclick="alert('⚠️ This feature has not been implemented yet.')"
