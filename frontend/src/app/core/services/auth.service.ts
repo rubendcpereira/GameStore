@@ -29,8 +29,8 @@ export class AuthService implements OnDestroy {
   public register(username: string, email: string, password: string): void {
     this.http
       .post<HttpResponse<unknown>>(this.URL_PATH + '/register', {
-        username,
-        email,
+        username: username.toLowerCase(),
+        email: email.toLowerCase(),
         password,
       })
       .pipe(takeUntil(this.ngUnsubscribe))
@@ -40,7 +40,7 @@ export class AuthService implements OnDestroy {
   public login(username: string, password: string): void {
     this.http
       .post<{ token: string; userId: string }>(this.URL_PATH + '/login', {
-        username,
+        username: username.toLowerCase(),
         password,
       })
       .pipe(takeUntil(this.ngUnsubscribe))
