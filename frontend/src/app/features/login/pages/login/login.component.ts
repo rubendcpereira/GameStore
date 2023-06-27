@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         .login(username!, password!)
         .pipe(
           catchError((err) => {
-            this.loginForm.setErrors({ wrongdetails: true });
+            this.loginForm.setErrors({ wrongDetails: true });
             return throwError(() => err);
           })
         )
