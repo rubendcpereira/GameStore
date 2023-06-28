@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
@@ -8,7 +7,7 @@ import { NavBarComponent } from './layout/navbar/navbar.component';
 
 @NgModule({
   declarations: [NavBarComponent],
-  imports: [CommonModule, SharedModule],
+  imports: [SharedModule],
   exports: [NavBarComponent],
   providers: [
     {

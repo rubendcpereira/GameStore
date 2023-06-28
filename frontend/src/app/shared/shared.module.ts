@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule, // Bootstrap
   ],
   exports: [
+    CommonModule,
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
