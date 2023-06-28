@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { GameSearchBarComponent } from './game-search-bar/game-search-bar.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,12 +18,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    HttpClientModule,
 
     NgbModule, // Bootstrap
   ],
   exports: [
     RouterModule,
     ReactiveFormsModule,
+    HttpClientModule,
 
     NgbModule,
 
