@@ -2,7 +2,7 @@
   <ng-template ngbSlide *ngFor="let game of games">
     <a [routerLink]="urlPath + '/' + game._id">
       <img
-        src="{{ game.images[0] }}"
+        [src]="game.images[0]"
         [alt]="game.name"
         class="rounded-border | w-100"
       />

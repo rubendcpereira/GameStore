@@ -1,10 +1,6 @@
 <a routerLink="/games/{{ game._id }}" class="text-decoration-none">
   <div class="clickable shadow-black | card mb-2 p-2 flex-row bg-light">
-    <img
-      src="{{ game.images[0] }}"
-      alt="{{ game.name }}"
-      class="object-fit-cover"
-    />
+    <img [src]="game.images[0]" [alt]="game.name" class="object-fit-cover" />
 
     <main class="ms-2 d-flex flex-column justify-content-center">
       <span class="fw-bold"> {{ game.name }} </span>
